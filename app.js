@@ -34,9 +34,15 @@ app.use(function(req, res, next){
   next();
 });
 
-app.get('/events', function(req, res) {
-  res.render('calendar');
+app.get('/calendar', function(req, res) {
+    res.render('calendar');
 });
+
+app.get('/events', function(req, res){
+  db.collection('events').find({}).toArray(function(err, results){
+    res.json(results)
+  })
+})
 
 
 

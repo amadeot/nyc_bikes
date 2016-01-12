@@ -80,5 +80,9 @@ app.post('/events/:id/comments', function(req, res){
 
 })
 
+app.get('/', function(req, res){
+  res.render('index')
+})
+
 
 app.listen(process.env.PORT || 3000);

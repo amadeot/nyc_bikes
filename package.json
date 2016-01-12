@@ -1,0 +1,29 @@
+{
+  "name": "nyc_bikes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amadeot/nyc_bikes.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amadeot/nyc_bikes/issues"
+  },
+  "homepage": "https://github.com/amadeot/nyc_bikes#readme",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
+    "method-override": "^2.3.5",
+    "mongodb": "^2.1.3",
+    "node-mongo-seeds": "^2.2.7",
+    "semantic-ui": "^2.1.8"
+  }
+}

@@ -17,6 +17,82 @@
   <body>
 
     <div id="calendar"></div>
-    
+    <script id="event-modal"type="text/x-handlebars-template">
+      <div class="ui modal">
+        <div class="header">
+          {{title}}
+        </div>
+        <div class="content">
+          <p><b>Date: </b> {{start}}</p>
+          <p><b>Sponsored By: </b> {{sponsor}}</p>
+          <p>{{description}}</p>
+          <p><b>Max Attendees: </b> {{max_attendees}}</p>
+          <p><b>Spots Left: </b> <span class="spots-left">{{spots_left}} </span></p> 
+
+          <form class="ui large form rsvp-form">
+            <div class="three fields">
+              <div class="field">
+                <input type="hidden" name="eventId" value="{{_id}}">
+                <input placeholder="Name" type="text" name="name">
+              </div>
+              <div class="field">
+                <input placeholder="Email" type="text" name="email">
+              </div>
+              <div class="field">
+                <div class="ui submit button rsvp-submit" id="rsvp-submit">RSVP</div>
+              </div> 
+            </div> 
+          </form>
+          
+          <div class="ui comments">
+            <h3 class="ui dividing header">Comments:</h3>
+            {{#each comments}}
+              <div class="comment">
+                <div class="content">
+                  <p class="author">
+                    <i class="user icon"></i>
+                    {{name}}:
+                  </p>
+                  <div class="text">
+                    {{comment}}          
+                  </div>
+                </div>
+              </div>
+            {{/each}}
+          </div>
+
+
+          <form class="ui large form comment-form">
+            <div class="three fields">
+              <div class="field">
+                <input type="hidden" name="eventId" value="{{_id}}">
+                <input placeholder="Name" type="text" name="name">
+              </div>
+              <div class="field">
+                <input placeholder="Comment" type="text" name="comment">
+              </div>
+              <div class="field">
+                <div class="ui submit button comment-submit" id="comment-submit">Submit Comment</div>
+              </div> 
+            </div> 
+          </form>
+
+
+        </div> 
+      </div>
+    </script>
+    <script type="text/x-handlebars-template" id="comment-template">
+      <div class="comment">
+        <div class="content">
+          <p class="author">
+            <i class="user icon"></i>
+            {{name}}:
+          </p>
+          <div class="text">
+            {{comment}}          
+          </div>
+        </div>
+      </div>
+    </script>
   </body>
 </html>

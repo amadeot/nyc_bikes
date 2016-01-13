@@ -1,6 +1,6 @@
 var submitRSVP = function(event){
   var $form = $('.active .rsvp-form');
-  var allFields = $form.form('get values')
+  var allFields = $form.form('get values');
   if(allFields.name !== "" && allFields.email !== ""){
     $.ajax({
       url: '/events/'+allFields.eventId+'/rsvps',
@@ -8,7 +8,9 @@ var submitRSVP = function(event){
       dataType: 'json',
       data: {rsvp: allFields}
     }).always(function(){
-      console.log($('.active .spots-left').text());
+      var oldSpots = $('.active .spots-left').text();
+      var newSpots = parseInt(oldSpots) - 1;
+      $('.active .spots-left').text(newSpots);
       $form.form('clear');
     })    
   } else {
@@ -19,7 +21,7 @@ var submitRSVP = function(event){
 
 var submitComment = function(event){
   var $form = $('.active .comment-form');
-  var allFields = $form.form('get values')
+  var allFields = $form.form('get values');
   $.ajax({
     url: '/events/'+allFields.eventId+'/comments',
     type: 'POST',
@@ -40,9 +42,9 @@ var showModal = function(calEvent){
     type: 'get',
     dataType: 'json'
   }).done(function(clickedEvent){
-    clickedEvent.spots_left = parseInt(clickedEvent.max_attendees)-clickedEvent.rsvps.length
+    clickedEvent.spots_left = parseInt(clickedEvent.max_attendees)-clickedEvent.rsvps.length;
     var source = $('#event-modal').html();
-    var template = Handlebars.compile(source)
+    var template = Handlebars.compile(source);
     var html = template(clickedEvent);
     $('body').append(html);
     $(html).modal({
@@ -76,6 +78,6 @@ $(document).ready(function() {
       showModal(calEvent)
     }
   });
-  renderEvents()
+  renderEvents();
 });
 
